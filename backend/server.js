@@ -16,8 +16,14 @@ import resumeRouter from './routes/resume.js';
 const app = express();
 const PORT = process.env.PORT || 4000;
 const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:5173';
-
-app.use(cors({ origin: FRONTEND_URL, credentials: true }));
+// Allow multiple origins (e.g. Vercel default + custom domain)
+const allowedOrigins = FRONTEND_URL.split(',').map((u) => u.trim()).filter(Boolean);
+const corsOrigin = (origin, cb) => {
+  if (!origin || allowedOrigins.length === 0) return cb(null, true);
+  if (allowedOrigins.includes(origin)) return cb(null, true);
+  return cb(null, allowedOrigins[0]); // fallback to first
+};
+app.use(cors({ origin: corsOrigin, credentials: true }));
 app.use(express.json());
 
 app.use('/api/projects', projectsRouter);

@@ -94,50 +94,50 @@ export const HeroAwwwards: React.FC = () => {
       <div className="absolute top-1/4 -left-20 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
       <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
       
-      <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 text-center pb-28 sm:pb-12">
         {/* Professional label */}
-        <div ref={labelRef} className="inline-flex items-center gap-2 px-4 py-2 mb-8 bg-muted/50 backdrop-blur-sm border border-border rounded-full">
-          <Sparkles className="w-4 h-4 text-blue-500" />
+        <div ref={labelRef} className="inline-flex items-center gap-2 px-4 py-2 mb-6 sm:mb-8 bg-muted/50 backdrop-blur-sm border border-border rounded-full">
+          <Sparkles className="w-4 h-4 text-blue-500 shrink-0" />
           <span className="text-sm text-muted-foreground">Available for opportunities</span>
         </div>
 
-        {/* Main headline - solid, high-contrast, readable in both themes */}
+        {/* Main headline - responsive size so mobile is readable */}
         <h1 
           ref={headlineRef}
-          className="text-7xl md:text-8xl lg:text-9xl mb-6 tracking-tight text-foreground font-semibold drop-shadow-[0_2px_20px_rgba(0,0,0,0.15)] dark:drop-shadow-[0_2px_24px_rgba(0,0,0,0.5)]"
+          className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl mb-4 sm:mb-6 tracking-tight text-foreground font-semibold drop-shadow-[0_2px_20px_rgba(0,0,0,0.15)] dark:drop-shadow-[0_2px_24px_rgba(0,0,0,0.5)]"
         >
           Shubhanshu Kumar
         </h1>
 
-        {/* Subline with gradient */}
+        {/* Subline with gradient - smaller on mobile */}
         <h2 
           ref={sublineRef}
-          className="text-2xl md:text-4xl lg:text-5xl mb-8 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500"
+          className="text-lg sm:text-xl md:text-4xl lg:text-5xl mb-6 sm:mb-8 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 px-1"
         >
           Full Stack Developer | Digital Creator | Entrepreneur
         </h2>
 
-        {/* Tagline */}
+        {/* Tagline - comfortable line length on mobile */}
         <p 
           ref={taglineRef}
-          className="text-lg md:text-xl mb-12 text-muted-foreground max-w-3xl mx-auto leading-relaxed"
+          className="text-base sm:text-lg md:text-xl mb-8 sm:mb-12 text-muted-foreground max-w-3xl mx-auto leading-relaxed px-1"
         >
           Building scalable web apps, digital experiences, and impactful solutions that drive growth and innovation.
         </p>
 
-        {/* CTA Buttons */}
-        <div ref={ctaRef} className="flex flex-wrap gap-4 justify-center items-center">
+        {/* CTA Buttons - stack on mobile, same width; no overlap with scroll indicator */}
+        <div ref={ctaRef} className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center items-stretch sm:items-center max-w-md sm:max-w-none mx-auto">
           <button 
             onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })}
-            className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-full transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/50 flex items-center gap-2"
+            className="group px-6 sm:px-8 py-3.5 sm:py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-full transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/50 flex items-center justify-center gap-2 min-h-[48px]"
           >
             <span>View Work</span>
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform shrink-0" />
           </button>
           
           <button 
             onClick={() => window.open(getResumeDownloadUrl(), '_blank')}
-            className="px-8 py-4 bg-muted/50 hover:bg-muted backdrop-blur-sm text-foreground rounded-full border border-border hover:border-foreground/30 transition-all duration-300 hover:scale-105"
+            className="px-6 sm:px-8 py-3.5 sm:py-4 bg-muted/50 hover:bg-muted backdrop-blur-sm text-foreground rounded-full border border-border hover:border-foreground/30 transition-all duration-300 hover:scale-105 min-h-[48px]"
           >
             Download Resume
           </button>
@@ -155,7 +155,7 @@ export const HeroAwwwards: React.FC = () => {
                 type="button"
                 onClick={() => document.getElementById(fileInputId)?.click()}
                 disabled={resumeUploading}
-                className="px-8 py-4 bg-muted/50 hover:bg-muted backdrop-blur-sm text-foreground rounded-full border border-border hover:border-foreground/30 transition-all duration-300 hover:scale-105 inline-flex items-center gap-2 disabled:opacity-60"
+                className="px-6 sm:px-8 py-3.5 sm:py-4 bg-muted/50 hover:bg-muted backdrop-blur-sm text-foreground rounded-full border border-border hover:border-foreground/30 transition-all duration-300 hover:scale-105 inline-flex items-center justify-center gap-2 disabled:opacity-60 min-h-[48px]"
               >
                 {resumeUploading ? (
                   <>
@@ -164,7 +164,7 @@ export const HeroAwwwards: React.FC = () => {
                   </>
                 ) : (
                   <>
-                    <Upload className="w-4 h-4" />
+                    <Upload className="w-4 h-4 shrink-0" />
                     Update Resume
                   </>
                 )}
@@ -174,22 +174,22 @@ export const HeroAwwwards: React.FC = () => {
           
           <button 
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            className="px-8 py-4 bg-transparent hover:bg-muted/50 text-muted-foreground hover:text-foreground rounded-full border border-border hover:border-blue-500 transition-all duration-300"
+            className="px-6 sm:px-8 py-3.5 sm:py-4 bg-transparent hover:bg-muted/50 text-muted-foreground hover:text-foreground rounded-full border border-border hover:border-blue-500 transition-all duration-300 min-h-[48px]"
           >
             Contact
           </button>
         </div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator - hidden on very small screens to avoid overlapping buttons */}
       <div 
         ref={scrollRef}
         onClick={scrollToNext}
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 cursor-pointer opacity-0"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 cursor-pointer opacity-0 hidden sm:flex flex-col items-center"
       >
         <div className="flex flex-col items-center gap-2 text-muted-foreground hover:text-blue-500 transition-colors group">
           <span className="text-xs uppercase tracking-widest">Let's go!</span>
-          <div className="w-px h-16 bg-gradient-to-b from-transparent via-muted-foreground to-transparent group-hover:via-blue-500 transition-colors"></div>
+          <div className="w-px h-12 sm:h-16 bg-gradient-to-b from-transparent via-muted-foreground to-transparent group-hover:via-blue-500 transition-colors"></div>
           <ChevronDown className="w-5 h-5" />
         </div>
       </div>

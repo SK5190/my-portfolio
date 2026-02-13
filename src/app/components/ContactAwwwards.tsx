@@ -83,93 +83,93 @@ export const ContactAwwwards: React.FC = () => {
     <section 
       id="contact"
       ref={sectionRef}
-      className="relative min-h-screen bg-muted/30 py-32 px-6 overflow-hidden"
+      className="relative min-h-screen bg-muted/30 py-16 sm:py-24 md:py-32 px-4 sm:px-6 overflow-hidden"
     >
       {/* Background */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/10 via-transparent to-transparent"></div>
 
       <div className="relative max-w-7xl mx-auto">
         {/* Section header */}
-        <div ref={titleRef} className="mb-20">
+        <div ref={titleRef} className="mb-12 sm:mb-20">
           <div className="inline-block mb-4">
             <span className="text-sm uppercase tracking-widest text-blue-500">Contact</span>
           </div>
-          <h2 className="text-5xl md:text-7xl mb-6 text-foreground max-w-4xl">
+          <h2 className="text-3xl sm:text-5xl md:text-7xl mb-4 sm:mb-6 text-foreground max-w-4xl">
             Let's work together
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500"></div>
-          <p className="text-xl text-muted-foreground mt-6 max-w-3xl">
+          <p className="text-base sm:text-xl text-muted-foreground mt-4 sm:mt-6 max-w-3xl">
             I'm currently available for new projects and opportunities. Whether you need development, 
             digital strategy, or creative solutions, let's connect.
           </p>
         </div>
 
-        <div ref={contentRef} className="grid lg:grid-cols-5 gap-12">
+        <div ref={contentRef} className="grid lg:grid-cols-5 gap-8 sm:gap-12">
           {/* Contact Methods */}
-          <div className="lg:col-span-2 space-y-6">
-            <div className="bg-card/80 backdrop-blur-sm p-6 rounded-2xl border border-border hover:border-blue-500/50 transition-all duration-300 group">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 text-white">
-                  <Mail className="w-6 h-6" />
+          <div className="lg:col-span-2 space-y-4 sm:space-y-6">
+            <div className="bg-card/80 backdrop-blur-sm p-4 sm:p-6 rounded-2xl border border-border hover:border-blue-500/50 transition-all duration-300 group min-w-0">
+              <div className="flex items-start gap-3 sm:gap-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 text-white shrink-0">
+                  <Mail className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
-                <div className="flex-1">
+                <div className="flex-1 min-w-0">
                   <p className="text-sm text-muted-foreground mb-1">Email</p>
-                  <a href="mailto:shubhanshukumar3033@gmail.com" className="text-foreground hover:text-blue-500 transition-colors">
+                  <a href="mailto:shubhanshukumar3033@gmail.com" className="text-foreground hover:text-blue-500 transition-colors break-all text-sm sm:text-base">
                     shubhanshukumar3033@gmail.com
                   </a>
                 </div>
               </div>
             </div>
 
-            <div className="bg-card/80 backdrop-blur-sm p-6 rounded-2xl border border-border hover:border-green-500/50 transition-all duration-300 group">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 text-white">
-                  <Phone className="w-6 h-6" />
+            <div className="bg-card/80 backdrop-blur-sm p-4 sm:p-6 rounded-2xl border border-border hover:border-green-500/50 transition-all duration-300 group min-w-0">
+              <div className="flex items-start gap-3 sm:gap-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 text-white shrink-0">
+                  <Phone className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
-                <div className="flex-1">
+                <div className="flex-1 min-w-0">
                   <p className="text-sm text-muted-foreground mb-1">Phone</p>
-                  <a href="tel:+919456424212" className="text-foreground hover:text-green-500 transition-colors">
-                    +91 94564 24212 
+                  <a href="tel:+919456424212" className="text-foreground hover:text-green-500 transition-colors text-sm sm:text-base">
+                    +91 94564 24212
                   </a>
                 </div>
               </div>
             </div>
 
-            <div className="bg-card/80 backdrop-blur-sm p-6 rounded-2xl border border-border hover:border-purple-500/50 transition-all duration-300 group">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 text-white">
-                  <Github className="w-6 h-6" />
+            <div className="bg-card/80 backdrop-blur-sm p-4 sm:p-6 rounded-2xl border border-border hover:border-purple-500/50 transition-all duration-300 group min-w-0">
+              <div className="flex items-start gap-3 sm:gap-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 text-white shrink-0">
+                  <Github className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
-                <div className="flex-1">
+                <div className="flex-1 min-w-0">
                   <p className="text-sm text-muted-foreground mb-1">GitHub</p>
                   <a 
                     href="https://github.com/SK5190" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-foreground hover:text-purple-500 transition-colors flex items-center gap-1"
+                    className="text-foreground hover:text-purple-500 transition-colors flex items-center gap-1 break-all text-sm sm:text-base"
                   >
-                    <span>github.com/SK5190</span>
-                    <ArrowUpRight className="w-4 h-4" />
+                    <span className="break-all">github.com/SK5190</span>
+                    <ArrowUpRight className="w-4 h-4 shrink-0" />
                   </a>
                 </div>
               </div>
             </div>
 
-            <div className="bg-card/80 backdrop-blur-sm p-6 rounded-2xl border border-border hover:border-blue-500/50 transition-all duration-300 group">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 text-white">
-                  <Linkedin className="w-6 h-6" />
+            <div className="bg-card/80 backdrop-blur-sm p-4 sm:p-6 rounded-2xl border border-border hover:border-blue-500/50 transition-all duration-300 group min-w-0">
+              <div className="flex items-start gap-3 sm:gap-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 text-white shrink-0">
+                  <Linkedin className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
-                <div className="flex-1">
+                <div className="flex-1 min-w-0">
                   <p className="text-sm text-muted-foreground mb-1">LinkedIn</p>
                   <a 
                     href="https://linkedin.com/in/shubhanshu-kumar3033" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-foreground hover:text-blue-500 transition-colors flex items-center gap-1"
+                    className="text-foreground hover:text-blue-500 transition-colors flex items-center gap-1 break-all text-sm sm:text-base"
                   >
-                    <span>linkedin.com/in/shubhanshu-kumar3033</span>
-                    <ArrowUpRight className="w-4 h-4" />
+                    <span className="break-all">linkedin.com/in/shubhanshu-kumar3033</span>
+                    <ArrowUpRight className="w-4 h-4 shrink-0" />
                   </a>
                 </div>
               </div>
@@ -177,13 +177,13 @@ export const ContactAwwwards: React.FC = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="lg:col-span-3">
-            <form onSubmit={handleSubmit} className="bg-card/80 backdrop-blur-sm p-8 rounded-2xl border border-border">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-500 rounded-lg flex items-center justify-center text-white">
+          <div className="lg:col-span-3 min-w-0">
+            <form onSubmit={handleSubmit} className="bg-card/80 backdrop-blur-sm p-4 sm:p-6 md:p-8 rounded-2xl border border-border">
+              <div className="flex items-center gap-3 mb-4 sm:mb-6">
+                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-500 rounded-lg flex items-center justify-center text-white shrink-0">
                   <MessageSquare className="w-5 h-5" />
                 </div>
-                <h3 className="text-2xl text-foreground">Send a message</h3>
+                <h3 className="text-xl sm:text-2xl text-foreground">Send a message</h3>
               </div>
 
               {submitStatus === 'success' && (
@@ -197,9 +197,9 @@ export const ContactAwwwards: React.FC = () => {
                 </div>
               )}
 
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm text-muted-foreground mb-2">
+                  <label htmlFor="name" className="block text-sm text-muted-foreground mb-1.5 sm:mb-2">
                     Your Name
                   </label>
                   <input
@@ -209,13 +209,13 @@ export const ContactAwwwards: React.FC = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-4 bg-muted/50 border border-border rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:border-blue-500 transition-colors"
+                    className="w-full px-4 py-3 sm:py-4 bg-muted/50 border border-border rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:border-blue-500 transition-colors min-h-[48px]"
                     placeholder="John Doe"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm text-muted-foreground mb-2">
+                  <label htmlFor="email" className="block text-sm text-muted-foreground mb-1.5 sm:mb-2">
                     Your Email
                   </label>
                   <input
@@ -225,13 +225,13 @@ export const ContactAwwwards: React.FC = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-4 bg-muted/50 border border-border rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:border-blue-500 transition-colors"
+                    className="w-full px-4 py-3 sm:py-4 bg-muted/50 border border-border rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:border-blue-500 transition-colors min-h-[48px]"
                     placeholder="john@example.com"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm text-muted-foreground mb-2">
+                  <label htmlFor="message" className="block text-sm text-muted-foreground mb-1.5 sm:mb-2">
                     Your Message
                   </label>
                   <textarea
@@ -240,8 +240,8 @@ export const ContactAwwwards: React.FC = () => {
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    rows={6}
-                    className="w-full px-4 py-4 bg-muted/50 border border-border rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:border-blue-500 transition-colors resize-none"
+                    rows={5}
+                    className="w-full px-4 py-3 sm:py-4 bg-muted/50 border border-border rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:border-blue-500 transition-colors resize-none min-h-[120px]"
                     placeholder="Tell me about your project..."
                   />
                 </div>
@@ -249,7 +249,7 @@ export const ContactAwwwards: React.FC = () => {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 disabled:opacity-70 disabled:cursor-not-allowed text-white rounded-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/30"
+                  className="w-full flex items-center justify-center gap-2 px-6 py-3.5 sm:py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 disabled:opacity-70 disabled:cursor-not-allowed text-white rounded-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/30 min-h-[48px]"
                 >
                   {submitting ? (
                     <>
@@ -270,7 +270,7 @@ export const ContactAwwwards: React.FC = () => {
       </div>
 
       {/* Footer */}
-      <footer className="relative max-w-7xl mx-auto mt-32 pt-12 border-t border-border">
+      <footer className="relative max-w-7xl mx-auto mt-16 sm:mt-24 md:mt-32 pt-8 sm:pt-12 px-4 sm:px-0 border-t border-border">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div>
             <p className="text-muted-foreground text-sm">

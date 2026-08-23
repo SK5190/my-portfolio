@@ -38,7 +38,7 @@ router.post('/', async (req, res) => {
         return res.status(502).json({ error: 'Message saved but email could not be sent. Please try again later.' });
       }
     } else if (!isEmailConfigured()) {
-      console.warn('Contact form: SMTP not configured — set SMTP_* and CONTACT_EMAIL_TO in backend/.env');
+      console.warn('Contact form: email not configured — set RESEND_API_KEY (Render) or SMTP_* (local) and CONTACT_EMAIL_TO');
     }
 
     res.status(201).json({ success: true, id: submission._id, emailSent });

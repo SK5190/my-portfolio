@@ -8,7 +8,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 dotenv.config({ path: join(__dirname, '.env') });
 import cors from 'cors';
 import { connectDB } from './config/db.js';
-import { isEmailConfigured, verifyEmailTransport } from './utils/sendEmail.js';
+import { isEmailConfigured, verifyEmailTransport, getEmailProviderName } from './utils/sendEmail.js';
 import projectsRouter from './routes/projects.js';
 import contactRouter from './routes/contact.js';
 import certificatesRouter from './routes/certificates.js';
@@ -38,13 +38,16 @@ connectDB().then(async () => {
   if (isEmailConfigured()) {
     try {
       await verifyEmailTransport();
-      console.log('Nodemailer: SMTP connection verified');
+      const provider = getEmailProviderName();
+      console.log(`Email: ${provider} transport ready`);
     } catch (err) {
-      console.error('Nodemailer: SMTP verification failed —', err.message);
-      console.error('Check SMTP_USER / SMTP_PASS in backend/.env (Gmail needs an App Password)');
+      console.error('Email transport verification failed —', err.message);
+      if (getEmailProviderName() === 'smtp') {
+        console.error('SMTP may be blocked on Render free tier — use RESEND_API_KEY instead');
+      }
     }
   } else {
-    console.warn('Nodemailer: not configured — add SMTP_* and CONTACT_EMAIL_TO to backend/.env');
+    console.warn('Email: not configured — set RESEND_API_KEY + CONTACT_EMAIL_TO on Render, or SMTP_* locally');
   }
   app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
 });

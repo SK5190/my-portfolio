@@ -17,13 +17,34 @@ import resumeRouter from './routes/resume.js';
 const app = express();
 const PORT = process.env.PORT || 4000;
 const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:5173';
-// Allow multiple origins (e.g. Vercel default + custom domain)
-const allowedOrigins = FRONTEND_URL.split(',').map((u) => u.trim()).filter(Boolean);
+
+function normalizeOrigin(url) {
+  return url.trim().replace(/\/$/, '');
+}
+
+// Comma-separated: e.g. http://localhost:5173,https://your-app.vercel.app
+const allowedOrigins = FRONTEND_URL.split(',')
+  .map(normalizeOrigin)
+  .filter(Boolean);
+
 const corsOrigin = (origin, cb) => {
-  if (!origin || allowedOrigins.length === 0) return cb(null, true);
-  if (allowedOrigins.includes(origin)) return cb(null, true);
-  return cb(null, allowedOrigins[0]); // fallback to first
+  // Same-origin requests, server tools, curl — no Origin header
+  if (!origin) return cb(null, true);
+
+  const normalized = normalizeOrigin(origin);
+  if (allowedOrigins.includes(normalized)) {
+    return cb(null, origin);
+  }
+
+  // Convenience for local dev when FRONTEND_URL only lists production
+  if (process.env.NODE_ENV !== 'production' && /^https?:\/\/localhost(:\d+)?$/.test(normalized)) {
+    return cb(null, origin);
+  }
+
+  console.warn(`CORS blocked origin: ${origin} (allowed: ${allowedOrigins.join(', ')})`);
+  return cb(new Error('Not allowed by CORS'));
 };
+
 app.use(cors({ origin: corsOrigin, credentials: true }));
 app.use(express.json());
 
@@ -42,12 +63,9 @@ connectDB().then(async () => {
       console.log(`Email: ${provider} transport ready`);
     } catch (err) {
       console.error('Email transport verification failed —', err.message);
-      if (getEmailProviderName() === 'smtp') {
-        console.error('SMTP may be blocked on Render free tier — use RESEND_API_KEY instead');
-      }
     }
   } else {
-    console.warn('Email: not configured — set RESEND_API_KEY + CONTACT_EMAIL_TO on Render, or SMTP_* locally');
+    console.warn('Email: not configured — set RESEND_API_KEY and CONTACT_EMAIL_TO');
   }
   app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
 });

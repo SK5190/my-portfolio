@@ -43,9 +43,9 @@ export default async function handler(req, res) {
     };
 
     if (!isEmailConfigured()) {
-      console.error('Contact API: SMTP env vars missing on deployment host');
+      console.error('Contact API: Resend env vars missing on deployment host');
       return res.status(503).json({
-        error: 'Email service is not configured on the server. Add SMTP_HOST, SMTP_USER, SMTP_PASS, and CONTACT_EMAIL_TO in your deployment environment variables.',
+        error: 'Email service is not configured on the server. Add RESEND_API_KEY and CONTACT_EMAIL_TO in your deployment environment variables.',
       });
     }
 

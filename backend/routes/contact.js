@@ -6,7 +6,7 @@ const router = Router();
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-// POST /api/contact - submit contact form (saved to MongoDB + email via Nodemailer)
+// POST /api/contact - submit contact form (saved to MongoDB + Resend emails)
 router.post('/', async (req, res) => {
   try {
     const { name, email, message } = req.body;
@@ -38,7 +38,7 @@ router.post('/', async (req, res) => {
         return res.status(502).json({ error: 'Message saved but email could not be sent. Please try again later.' });
       }
     } else if (!isEmailConfigured()) {
-      console.warn('Contact form: email not configured — set RESEND_API_KEY (Render) or SMTP_* (local) and CONTACT_EMAIL_TO');
+      console.warn('Contact form: email not configured — set RESEND_API_KEY and CONTACT_EMAIL_TO');
     }
 
     res.status(201).json({ success: true, id: submission._id, emailSent });

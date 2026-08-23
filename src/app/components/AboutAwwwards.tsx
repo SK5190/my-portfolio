@@ -86,8 +86,8 @@ export const AboutAwwwards: React.FC = () => {
         <div ref={contentRef} className="grid lg:grid-cols-2 gap-16 mb-20">
           <div className="space-y-6">
             <p className="text-xl text-muted-foreground leading-relaxed">
-              I'm a final-year <span className="text-foreground">B.Tech Computer Science</span> student 
-              with a unique blend of technical expertise and creative capabilities.
+              I'm a <span className="text-foreground">B.Tech Computer Science graduate</span> (CGPA: 7.4/10) 
+              from Bharat Institute of Technology with a unique blend of technical expertise and creative capabilities.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
               As a <span className="text-blue-500">MERN stack developer</span>, I specialize in building 

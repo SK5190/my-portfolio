@@ -154,7 +154,7 @@ export const Experience: React.FC = () => {
         {/* Additional info */}
         <div className="mt-16 bg-gradient-to-r from-slate-900/50 to-slate-800/50 rounded-xl p-8 border border-slate-700">
           <p className="text-lg text-slate-300 text-center">
-            Currently pursuing B.Tech in Computer Science Engineering • Expected Graduation: 2026
+            Graduated B.Tech in Computer Science Engineering (CGPA: 7.4/10) • Bharat Institute of Technology • JEE Main 2022 FW (72.23 percentile)
           </p>
         </div>
       </div>

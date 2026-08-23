@@ -3,6 +3,10 @@ import { gsap } from 'gsap';
 import { ArrowRight, ChevronDown, Sparkles, Upload } from 'lucide-react';
 import { getResumeDownloadUrl, uploadResume } from '../api/client';
 
+const isDevEnvironment =
+  typeof import.meta !== 'undefined' &&
+  (import.meta as { env?: { DEV?: boolean } }).env?.DEV === true;
+
 export const HeroAwwwards: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
@@ -85,7 +89,7 @@ export const HeroAwwwards: React.FC = () => {
   return (
     <section 
       ref={heroRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-muted/30 to-background"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-muted/30 to-background py-24 sm:py-28"
     >
       {/* Animated background grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,currentColor_70%,transparent_110%)] opacity-20"></div>
@@ -95,8 +99,8 @@ export const HeroAwwwards: React.FC = () => {
       <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 text-center pb-28 sm:pb-12">
-        {/* Professional label */}
-        <div ref={labelRef} className="inline-flex items-center gap-2 px-4 py-2 mb-6 sm:mb-8 bg-muted/50 backdrop-blur-sm border border-border rounded-full">
+        {/* Hidden on short viewports where it would sit under the fixed nav */}
+        <div ref={labelRef} className="hidden [@media(min-height:680px)]:inline-flex items-center gap-2 px-4 py-2 mb-6 sm:mb-8 bg-muted/50 backdrop-blur-sm border border-border rounded-full">
           <Sparkles className="w-4 h-4 text-blue-500 shrink-0" />
           <span className="text-sm text-muted-foreground">Available for opportunities</span>
         </div>
@@ -141,7 +145,7 @@ export const HeroAwwwards: React.FC = () => {
           >
             Download Resume
           </button>
-          {import.meta.env.DEV && (
+          {isDevEnvironment && (
             <>
               <input
                 id={fileInputId}

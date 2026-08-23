@@ -1,6 +1,6 @@
-const API_BASE = typeof import.meta.env.VITE_API_URL === 'string' 
-  ? import.meta.env.VITE_API_URL.replace(/\/$/, '') 
-  : 'http://localhost:4000';
+const API_BASE = typeof import.meta.env.VITE_API_URL === 'string'
+  ? import.meta.env.VITE_API_URL.replace(/\/$/, '')
+  : '';
 
 export type ProjectFromAPI = {
   _id: string;

@@ -1,22 +1,33 @@
 import { Router } from 'express';
 import { ContactSubmission } from '../models/ContactSubmission.js';
-import { sendContactEmail } from '../utils/sendEmail.js';
+import { isEmailConfigured, sendContactEmail } from '../utils/sendEmail.js';
 
 const router = Router();
 
-// POST /api/contact - submit contact form (saved to MongoDB + email to you)
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+// POST /api/contact - submit contact form (saved to MongoDB + email via Nodemailer)
 router.post('/', async (req, res) => {
   try {
     const { name, email, message } = req.body;
     if (!name?.trim() || !email?.trim() || !message?.trim()) {
       return res.status(400).json({ error: 'Name, email, and message are required' });
     }
-    const submission = await ContactSubmission.create({ name: name.trim(), email: email.trim(), message: message.trim() });
+    if (!EMAIL_REGEX.test(email.trim())) {
+      return res.status(400).json({ error: 'Please enter a valid email address' });
+    }
 
+    const submission = await ContactSubmission.create({
+      name: name.trim(),
+      email: email.trim(),
+      message: message.trim()
+    });
+
+    let emailSent = false;
     const emailTo = process.env.CONTACT_EMAIL_TO;
-    if (emailTo) {
+    if (emailTo && isEmailConfigured()) {
       try {
-        await sendContactEmail({
+        emailSent = await sendContactEmail({
           to: emailTo,
           name: submission.name,
           email: submission.email,
@@ -24,10 +35,13 @@ router.post('/', async (req, res) => {
         });
       } catch (emailErr) {
         console.error('Contact email send error:', emailErr.message);
+        return res.status(502).json({ error: 'Message saved but email could not be sent. Please try again later.' });
       }
+    } else if (!isEmailConfigured()) {
+      console.warn('Contact form: SMTP not configured — set SMTP_* and CONTACT_EMAIL_TO in backend/.env');
     }
 
-    res.status(201).json({ success: true, id: submission._id });
+    res.status(201).json({ success: true, id: submission._id, emailSent });
   } catch (err) {
     console.error('POST /api/contact error:', err);
     res.status(500).json({ error: 'Failed to submit message' });

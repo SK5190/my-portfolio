@@ -128,8 +128,8 @@ export const ContactAwwwards: React.FC = () => {
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-sm text-muted-foreground mb-1">Phone</p>
-                  <a href="tel:+919456424212" className="text-foreground hover:text-green-500 transition-colors text-sm sm:text-base">
-                    +91 94564 24212
+                  <a href="tel:+917895502811" className="text-foreground hover:text-green-500 transition-colors text-sm sm:text-base">
+                    +91 78955 02811
                   </a>
                 </div>
               </div>
@@ -278,10 +278,10 @@ export const ContactAwwwards: React.FC = () => {
             </p>
           </div>
           <div className="flex items-center gap-6">
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
+            <a href="https://github.com/SK5190" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors" aria-label="GitHub profile">
               <Github className="w-5 h-5" />
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
+            <a href="https://linkedin.com/in/shubhanshu-kumar3033" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors" aria-label="LinkedIn profile">
               <Linkedin className="w-5 h-5" />
             </a>
           </div>

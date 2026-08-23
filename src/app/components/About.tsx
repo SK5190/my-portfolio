@@ -62,7 +62,7 @@ export const About: React.FC = () => {
           <div className="grid md:grid-cols-2 gap-12 mb-16">
             <div>
               <p className="text-lg text-slate-300 leading-relaxed mb-6">
-                I'm a final-year B.Tech Computer Science student with a passion for building 
+                I'm a B.Tech Computer Science graduate (CGPA: 7.4/10) with a passion for building 
                 robust, scalable web applications using the MERN stack. My focus is on creating 
                 solutions that not only look great but perform exceptionally well.
               </p>

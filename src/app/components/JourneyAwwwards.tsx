@@ -48,7 +48,7 @@ const journeys: Journey[] = [
     title: 'B.Tech Computer Science',
     organization: 'Bharat Institute of Technology',
     location: 'India',
-    description: 'Pursuing Computer Science Engineering with focus on web development, data structures, and software engineering. Final year student graduating in 2026.',
+    description: 'Graduated with B.Tech in Computer Science Engineering (CGPA: 7.4/10). Admitted through JEE Main 2022 Fee Waiver (FW) seat with a percentile of 72.23. Focused on web development, data structures, and software engineering.',
     type: 'development'
   }
 ];

@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Mail, Phone, Github, Linkedin, Send } from 'lucide-react';
+import { Mail, Phone, Github, Linkedin, Send, Loader2 } from 'lucide-react';
+import { submitContact } from '../api/client';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,6 +17,9 @@ export const Contact: React.FC = () => {
     email: '',
     message: ''
   });
+  const [submitting, setSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitMessage, setSubmitMessage] = useState('');
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -54,12 +58,21 @@ export const Contact: React.FC = () => {
     return () => ctx.revert();
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! I will get back to you soon.');
-    setFormData({ name: '', email: '', message: '' });
+    setSubmitStatus('idle');
+    setSubmitting(true);
+    try {
+      await submitContact(formData);
+      setSubmitStatus('success');
+      setSubmitMessage('Thank you for your message! I will get back to you soon.');
+      setFormData({ name: '', email: '', message: '' });
+    } catch (err) {
+      setSubmitStatus('error');
+      setSubmitMessage(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -101,7 +114,7 @@ export const Contact: React.FC = () => {
               </a>
 
               <a 
-                href="tel:+919456424212"
+                href="tel:+917895502811"
                 className="flex items-center gap-4 p-4 bg-slate-800/50 backdrop-blur-sm rounded-xl border border-slate-700 hover:border-green-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/10 group"
               >
                 <div className="w-12 h-12 bg-green-500/10 rounded-lg flex items-center justify-center group-hover:bg-green-500/20 transition-colors">
@@ -109,7 +122,7 @@ export const Contact: React.FC = () => {
                 </div>
                 <div>
                   <p className="text-sm text-slate-400">Phone</p>
-                  <p className="text-white">+91 94564 24212 </p>
+                  <p className="text-white">+91 78955 02811</p>
                 </div>
               </a>
 
@@ -148,6 +161,16 @@ export const Contact: React.FC = () => {
           {/* Contact Form */}
           <div>
             <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+              {submitStatus === 'success' && (
+                <div className="p-4 rounded-lg bg-green-500/10 border border-green-500/30 text-green-400 text-sm">
+                  {submitMessage}
+                </div>
+              )}
+              {submitStatus === 'error' && (
+                <div className="p-4 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 text-sm">
+                  {submitMessage}
+                </div>
+              )}
               <div>
                 <label htmlFor="name" className="block text-sm mb-2 text-slate-300">
                   Your Name
@@ -198,10 +221,20 @@ export const Contact: React.FC = () => {
 
               <button
                 type="submit"
-                className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/50 hover:scale-[1.02]"
+                disabled={submitting}
+                className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-blue-600 hover:bg-blue-700 disabled:opacity-70 disabled:cursor-not-allowed text-white rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/50 hover:scale-[1.02]"
               >
-                <Send className="w-5 h-5" />
-                <span>Send Message</span>
+                {submitting ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    <span>Sending...</span>
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-5 h-5" />
+                    <span>Send Message</span>
+                  </>
+                )}
               </button>
             </form>
           </div>
